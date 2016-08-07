@@ -73,11 +73,12 @@ class AvfanhaoSpider(CrawlSpider):
         items = selector.xpath('//div[@class="entry-content"]/p/text()').extract()
         for item in items:
             tokens = item.encode('utf8').replace('\n','').replace('：', ':').strip().split(':')
-            logging.debug(tokens)
+            # logging.debug(tokens)
             if len(tokens) != 2: continue
             if  tokens[0] == '中文名' or tokens[0] == '中文': cn_name = tokens[1]
             elif tokens[0] == '日文名' or tokens[0] == '日文': jp_name = tokens[1]
             elif tokens[0] == '英文名' or tokens[0] == '英文': en_name = tokens[1]
             elif tokens[0] == '姓名': jp_name = tokens[1]
             else: infos.append(tokens)
-        yield AvfanhaoItem(cn_name=cn_name, jp_name=jp_name, en_name=en_name, infos=infos, prods=prods, intro=intro)
+        yield AvfanhaoItem(cn_name=cn_name, jp_name=jp_name, en_name=en_name, infos=infos,
+                           prods=prods, intro=intro, item_url=response.url)

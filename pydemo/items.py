@@ -7,13 +7,13 @@
 
 import scrapy
 
-
 class PydemoItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
 
 class AvfanhaoItem(scrapy.Item):
+    item_url = scrapy.Field() # the url where item crawled.
     cn_name = scrapy.Field() #  Chinese name.
     jp_name = scrapy.Field() #  Japanese name.
     en_name = scrapy.Field() # English name.
