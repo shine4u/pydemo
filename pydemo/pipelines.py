@@ -17,6 +17,6 @@ class PydemoPipeline(object):
         if len(item['infos']) == 0: field_empty_cnt += 1
         if len(item['prods']) == 0: field_empty_cnt += 1
         if field_empty_cnt <= 3:
-            logging.warn('too many field_empty_cnt=[%d] item=%s' %
-                         (field_empty_cnt, item)) 
+            logging.warn('too many field_empty_cnt=[%d] item=%s' % (field_empty_cnt, item)) 
+
         return item
